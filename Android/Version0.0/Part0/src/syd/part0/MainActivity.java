@@ -1,3 +1,8 @@
+/**
+*@功能　程序入口avtivity
+*@原理　
+*/　
+
 package syd.part0;
 
 import android.os.Bundle;
@@ -14,19 +19,17 @@ public class MainActivity extends ParentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		bt = (Button)findViewById(R.id.button1);
-		bt.setOnClickListener(new btOnClickListener());
 		ExitApplication.getInstance().addActivity(this);
+		//
+		bt = (Button)findViewById(R.id.button1);
+		bt.setOnClickListener(new OnClickListener(){
+			/* 设置监听 */
+			@Override
+			public void onClick(View arg0) {
+				Intent it = new Intent();
+				it.setClass(MainActivity.this, Text01Activity.class);
+				MainActivity.this.startActivity(it);
+			}
+		});
 	}
-	
-	class btOnClickListener implements OnClickListener{
-		@Override
-		public void onClick(View arg0) {
-			Intent it = new Intent();
-			it.setClass(MainActivity.this, Text01Activity.class);
-			MainActivity.this.startActivity(it);
-		}
-		
-	}
-
 }
