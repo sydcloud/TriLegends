@@ -1,3 +1,8 @@
+/**
+*@功能　根据剧情展示一个主角在沙漠中行走的动画
+*@原理　对sidebar进行监听，根据sidebar进度逐帧改变activity布局背景图
+*/　
+
 package syd.part0;
 
 import android.content.Intent;
@@ -12,10 +17,12 @@ public class Game01Activity extends ParentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game01);
 		ExitApplication.getInstance().addActivity(this);
-		rlo = (RelativeLayout)findViewById(R.id.layout_activity_game01);
-		sb = (SeekBar)findViewById(R.id.seekBar_game01_1);
+		//
+		rlo = (RelativeLayout)findViewById(R.id.layout_activity_game01);// Game01Activity的布局
+		sb = (SeekBar)findViewById(R.id.seekBar_game01_1);// sideBar
+		//
 		sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-			
+			/* 设置监听 */
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
@@ -34,6 +41,7 @@ public class Game01Activity extends ParentActivity {
 				// TODO Auto-generated method stub
 				int p = progress/5;
 				switch (p) {
+					/* 将sidebar二十等分，当sidebar进度到达相应区间时，改变布局背景 */
 				case 0:
 					rlo.setBackgroundResource(R.drawable.book_blue_game1);
 					break;
